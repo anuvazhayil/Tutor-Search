@@ -6,6 +6,10 @@
 package UserPage;
 
 import javax.swing.JPanel;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 /**
  *
@@ -169,7 +173,8 @@ public class TutorProfile extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-        
+        UpdateTutor tutor = new UpdateTutor();
+        tutor.setVisible(true);
     }//GEN-LAST:event_updateActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
@@ -177,8 +182,32 @@ public class TutorProfile extends javax.swing.JPanel {
         this.setVisible(false);
     }//GEN-LAST:event_exitActionPerformed
 
+    Connection c = null;
+    Statement s = null;
+    
     private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
-        
+        try{
+            Class.forName("org.postgresql.Driver");
+            c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cptanu", "cptanu", "iluvmybrother");
+            System.out.println("Connection establised");
+            s = c.createStatement();
+            String sql = "select mplace, memailid, mphoneno, mfield from mentor where mname ='"+mname+"';";
+            ResultSet rs = s.executeQuery(sql);
+            while(rs.next()){
+                String place = rs.getString("mplace");
+                String email = rs.getString("memailid");
+                String phone = rs.getString("mphoneno"); 
+                String field = rs.getString("mfield");
+                nameText.setText(mname);
+                placeText.setText(place);
+                fieldText.setText(field);
+                emailText.setText(email);
+                phoneText.setText(phone);
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_refreshActionPerformed
 
 
