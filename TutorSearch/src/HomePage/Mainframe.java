@@ -247,6 +247,40 @@ public class Mainframe extends javax.swing.JFrame {
 
     private void chooseLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseLoginActionPerformed
         Object item = chooseLogin.getSelectedItem();
+        try{
+            String user = emailText.getText();
+            String passw = new String(passText.getPassword());
+            Class.forName("org.postgresql.Driver");
+            c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cptanu", "cptanu", "iluvmybrother");
+            System.out.println("Connection establised");
+            s = c.createStatement();
+            invalidLabel.setVisible(true);
+            if(item.toString().equals("Student")){
+                String sql = "select spassword,name from student where emailid='"+user+"'";
+                ResultSet rs = s.executeQuery(sql);
+                while(rs.next()){
+                    String pass = rs.getString("spassword");
+                    String name = rs.getString("name");
+                    if(pass.equals(passw)){
+                        UserPage.student_account tutor = new UserPage.student_account(myFrame,name);
+                        myFrame.removeAll();
+                        myFrame.setLayout(new BorderLayout());
+                        myFrame.add(tutor, BorderLayout.CENTER);
+                        myFrame.repaint();
+                        myFrame.revalidate();
+                    }
+                    else{
+                        invalidLabel.setVisible(true);
+                    }
+                }
+                if(!rs.next()){
+                    invalidLabel.setVisible(true);
+                }
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_chooseLoginActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
