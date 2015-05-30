@@ -1,0 +1,37 @@
+// Table for storing student details
+create table student(name varchar(20),place varchar(20), age int, emailid varchar(25) primary key, spassword varchar(20));
+
+// Table for storing mentor details
+create table mentor(mname varchar(20),mplace varchar(20), mfield varchar(20), mexperience int, memailid varchar(25) primary key, mphoneno varchar(15), mpassword varchar(20));
+
+insert into student values('Jaimon','Palakkad',20,'jaimon@gmail.com','jai');
+insert into student values('Navneeth','Kottayam',21,'navneeth@gmail.com','mottu');
+insert into student values('Swathi','Thiruvalla',20,'swathi@gmail.com','swathi');
+insert into student values('Amrutha','Kannur',20,'amrutha@gmail.com','ammaamma');
+insert into student values('Geetha','Kozhikode',22,'geetha@gmail.com','geetha');
+insert into student values('Neha','Thalaseri',22,'neha@gmail.com','nidhi');
+insert into student values('Priya','Palakkad',21,'priyav@gmail.com','priyav');
+insert into student values('Anju','Kochi',22,'anjuchinnu@gmail.com','chinnu');
+insert into student values('Tony','Kannur',22,'tony@gmail.com','johnson');
+insert into student values('Ashwathy','Alapuzha',21,'ashwathy@gmail.com','ashwa');
+insert into student values('Rupitha','Palakkad',21,'rupitha@gmail.com','rupz');
+insert into student values('Pooja','Kollam',20,'pooja@gmail.com','puzhu');
+insert into student values('Archana','Idukki',22,'achuarchu@gmail.com','achumol');
+insert into student values('Epsitha','Bangalore',22,'eepsi@gmail.com','eepsi');
+insert into student values('Sreelakshmi','Kannur',22,'sree@gmail.com','sreekutty'); 
+
+insert into mentor values('Remya','Kollam','DBMS',10,'remyarajesh@gmail.com',9446812035,'remyar');
+insert into mentor values('Veena','Kayamkulam','Java',5,'veenag@gmail.com',9446345035,'veenag');    
+insert into mentor values('Suhas Kurup','Thiruvalla','Algorithm',9,'suhas@gmail.com',9446812875,'invent');
+insert into mentor values('Jyothisha','Palakkad','Algorithm',10,'jyothisha@gmail.com',9520182035,'jyothi');
+insert into mentor values('Chinmayi','Amritapuri','DBMS',2,'chinmayi@gmail.com',944763335,'chinz');
+insert into mentor values('Remya K','Kollam','Java',4,'remyak@gmail.com',82814812035,'kremya');
+insert into mentor values('Rajesh','Kottayam','DBMS',10,'rajesh@gmail.com',949520515,'rajeshraji');
+insert into mentor values('Sreelatha','Kannur','Maths',10,'lathasree@gmail.com',89126812345,'sree');
+insert into mentor values('Dhaneesh','Kannur','Maths',8,'dhaneeshkk@gmail.com',9446819856,'dhaneesh');
+insert into mentor values('Sarath','Kottayam','Security',10,'sarath@gmail.com',9875457095,'advisor');
+insert into mentor values('Ruphiny','Kochi','Security',2,'ruphiny@gmail.com',948757047,'ruphi');
+insert into mentor values('Geethu','Kochi','DBMS',1,'geethu@gmail.com',975494560,'geeth');
+insert into mentor values('Disha','Palakkad','Security',10,'disha@gmail.com',9764405696,'dish');
+insert into mentor values('Indu','Kollam','DBMS',10,'indublast@gmail.com',9446883746,'blasts');
+insert into mentor values('Prathibhamol','Kollam','Maths',6,'prathibha@gmail.com',8434756538,'prathi'); 
