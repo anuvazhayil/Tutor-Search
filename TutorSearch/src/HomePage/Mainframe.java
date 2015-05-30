@@ -262,7 +262,7 @@ public class Mainframe extends javax.swing.JFrame {
                     String pass = rs.getString("spassword");
                     String name = rs.getString("name");
                     if(pass.equals(passw)){
-                        UserPage.student_account tutor = new UserPage.student_account(myFrame,name);
+                        UserPage.StudentAccount tutor = new UserPage.StudentAccount(myFrame,name);
                         myFrame.removeAll();
                         myFrame.setLayout(new BorderLayout());
                         myFrame.add(tutor, BorderLayout.CENTER);
@@ -276,6 +276,24 @@ public class Mainframe extends javax.swing.JFrame {
                 if(!rs.next()){
                     invalidLabel.setVisible(true);
                 }
+            }
+            else if(item.toString().equals("Mentor")){
+                String sql = "select mname,mplace,mfield,memailid,mphoneno from mentor where memailid='"+user+"';";
+                ResultSet rs = s.executeQuery(sql);
+                while(rs.next()){
+                    String name = rs.getString("mname");
+                    String place = rs.getString("mplace");
+                    String field = rs.getString("mfield");
+                    String email = rs.getString("memailid");
+                    String phone = rs.getString("mphoneno");
+                    UserPage.TutorProfile tutor = new UserPage.TutorProfile(myFrame,name, place, field, email,phone);
+                    myFrame.removeAll();
+                    myFrame.setLayout(new BorderLayout());
+                    myFrame.add(tutor, BorderLayout.CENTER);
+                    myFrame.repaint();
+                    myFrame.revalidate();
+                }
+                invalidLabel.setVisible(true);
             }
         }
         catch(Exception e){
