@@ -6,6 +6,9 @@
 package Register;
 
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 
 /**
  *
@@ -25,6 +28,10 @@ public class registertu extends javax.swing.JFrame {
      * This method is called from within the constructor to initialize the form.
      */
     @SuppressWarnings("unchecked")
+            
+    Connection c = null;
+    Statement s = null;
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -185,6 +192,24 @@ public class registertu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         dispose();
+        try{
+            Class.forName("org.postgresql.Driver");
+            c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cptanu", "cptanu", "iluvmybrother");
+            System.out.println("Connection establised");
+            s = c.createStatement();
+            String name = nameText.getText();
+            String place = placeText.getText();
+            String emailid = emailText.getText();
+            String field = fieldText.getText();
+            String experience = expcText.getText();
+            String phone = phoneText.getText();
+            String password = new String(passField.getPassword());
+            String sql = "insert into mentor values('"+name+"','"+place+"','"+field+"','"+experience+"','"+emailid+"','"+phone+"','"+password+"')";
+            s.executeUpdate(sql);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void nameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextActionPerformed

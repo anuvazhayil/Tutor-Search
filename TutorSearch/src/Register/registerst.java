@@ -7,6 +7,9 @@ package Register;
 
 import java.awt.Color;
 import java.io.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 import java.util.*;
 /**
  *
@@ -143,8 +146,27 @@ public class registerst extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    Connection c = null;
+    Statement s = null;
+    
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         dispose();
+        try{
+            Class.forName("org.postgresql.Driver");
+            c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cptanu", "cptanu", "iluvmybrother");
+            System.out.println("Connection establised");
+            s = c.createStatement();
+            String name = nameText.getText();
+            String place = placeText.getText();
+            String age = ageText.getText();
+            String emailid = emailText.getText();
+            String password = new String(passField.getPassword());
+            String sql = "insert into student values('"+name+"','"+place+"','"+age+"','"+emailid+"','"+password+"');";
+            s.executeUpdate(sql);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void emailTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextActionPerformed
