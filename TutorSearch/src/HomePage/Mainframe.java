@@ -235,6 +235,14 @@ public class Mainframe extends javax.swing.JFrame {
 
     private void registerAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerAsActionPerformed
         Object selected = registerAs.getSelectedItem();
+                if(selected.toString().equals("Student")){
+                   Register.registerst student = new Register.registerst();
+                   student.setVisible(true);
+                }
+                else if(selected.toString().equals("Mentor")){
+                   Register.registertu tutor = new Register.registertu();
+                   tutor.setVisible(true);
+                }
     }//GEN-LAST:event_registerAsActionPerformed
 
     private void chooseLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseLoginActionPerformed
