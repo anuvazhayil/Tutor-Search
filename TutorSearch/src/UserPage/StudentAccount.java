@@ -13,12 +13,12 @@ import java.sql.*;
  *
  * @author cptanu
  */
-public class student_account extends javax.swing.JPanel {
+public class StudentAccount extends javax.swing.JPanel {
 
     /**
      * Creates new form tutor_details
      */
-    public student_account(JPanel j, String name){
+    public StudentAccount(JPanel j, String name){
         j.removeAll();
         j.add(this);
         initComponents();
@@ -28,7 +28,6 @@ public class student_account extends javax.swing.JPanel {
         user.setText(name);
         msg.setVisible(false);
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -248,11 +247,47 @@ public class student_account extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    Connection c = null;
+    Statement s = null;
+    
     private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
 
     }//GEN-LAST:event_userActionPerformed
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        
+        try{
+            int flag = 0;
+            String place = placeText.getText();
+            String field = fieldText.getText();
+            Class.forName("org.postgresql.Driver");
+            c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cptanu", "cptanu", "iluvmybrother");
+            System.out.println("Connection establised");
+            s = c.createStatement();
+            String sql = "select mname, memailid, mphoneno from mentor where mplace ='"+place+"' and mfield ='"+field+"';";
+            ResultSet rs = s.executeQuery(sql);
+                while(rs.next()){
+                    String mname = rs.getString("mname");
+                    String memailid = rs.getString("memailid");
+                    String mphoneno = rs.getString("mphoneno");
+                    nameArea.append(mname+"\n");
+                    emailArea.append(memailid+"\n");
+                    phoneArea.append(mphoneno+"\n");      
+                    flag = 1;
+                }
+                if((!rs.next())&&(flag==0 )){
+                    msg.setVisible(true);
+                }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        searchLabel.setVisible(false); nameLabel.setVisible(true);
+        placeLabel.setVisible(false); emailLabel.setVisible(true);
+        fieldLabel.setVisible(false); phoneLabel.setVisible(true);
+        placeText.setVisible(false);
+        fieldText.setVisible(false);
+        okButton.setVisible(false);
+        nameArea.setVisible(true); emailArea.setVisible(true);
+        phoneArea.setVisible(true);
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
@@ -261,7 +296,22 @@ public class student_account extends javax.swing.JPanel {
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        
+        nameArea.setText(null);
+        emailArea.setText(null);
+        phoneArea.setText(null);
+        nameArea.setVisible(false);
+        emailArea.setVisible(false);
+        phoneArea.setVisible(false);
+        nameLabel.setVisible(false);
+        emailLabel.setVisible(false);
+        phoneLabel.setVisible(false);
+        searchLabel.setVisible(true); 
+        placeLabel.setVisible(true); 
+        fieldLabel.setVisible(true); 
+        placeText.setVisible(true);
+        fieldText.setVisible(true);
+        okButton.setVisible(true);
+        msg.setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
 
 
