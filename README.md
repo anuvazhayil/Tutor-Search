@@ -14,7 +14,8 @@ Home page
 ![Home page](https://captanu.files.wordpress.com/2015/05/homepage.png)
 
 Registration forms
-![Registration forms](https://captanu.files.wordpress.com/2015/05/student_registration.png) ![Registration](https://captanu.files.wordpress.com/2015/05/mentor_registration.png "Registration forms")
+![Registration forms](https://captanu.files.wordpress.com/2015/05/student_registration.png) 
+![Registration](https://captanu.files.wordpress.com/2015/05/mentor_registration.png "Registration forms")
 
 Student's profile page
 ![Student's profile page](https://captanu.files.wordpress.com/2015/05/student_profile.png "Student's profile page")
