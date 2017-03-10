@@ -22,7 +22,6 @@ insert into student values('Sreelakshmi','Kannur',22,'sree@gmail.com','sreekutty
 
 insert into mentor values('Remya','Kollam','DBMS',10,'remyarajesh@gmail.com',9446812035,'remyar');
 insert into mentor values('Veena','Kayamkulam','Java',5,'veenag@gmail.com',9446345035,'veenag');    
-insert into mentor values('Suhas Kurup','Thiruvalla','Algorithm',9,'suhas@gmail.com',9446812875,'invent');
 insert into mentor values('Jyothisha','Palakkad','Algorithm',10,'jyothisha@gmail.com',9520182035,'jyothi');
 insert into mentor values('Chinmayi','Amritapuri','DBMS',2,'chinmayi@gmail.com',944763335,'chinz');
 insert into mentor values('Remya K','Kollam','Java',4,'remyak@gmail.com',82814812035,'kremya');
